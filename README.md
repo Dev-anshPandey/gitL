@@ -13,7 +13,3 @@ A Subheading !!!
 #Subheading
 
 A Subheading !!!
-
-#Subheading
-
-A Subheading !!!
