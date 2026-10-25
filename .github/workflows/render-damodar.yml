@@ -1,0 +1,26 @@
+name: Render Damodar Reel
+on:
+  push:
+    branches:
+      - damodar-reel-render-20261025
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install ffmpeg
+        run: sudo apt-get update && sudo apt-get install -y ffmpeg fonts-dejavu-core
+      - name: Render reel
+        run: python3 render_damodar.py
+      - name: Upload MP4
+        uses: actions/upload-artifact@v4
+        with:
+          name: Damodar_Month_Reel_Final
+          path: Damodar_Month_Reel_Final.mp4
+          if-no-files-found: error
+          retention-days: 1
